@@ -2,22 +2,15 @@
 <p><strong>Data:</strong> <%= data_br(Date.today) %> </p>
 <p> <%=nome_aplicação%> </p>
 
-<ul>    
-    <li>
-        <%= link_to "Cadastro de Moedas", coins_path %>
-     </li>
-    <li>
-        <%= link_to "Mostrar moedas", coins_path %>
-     </li>
-</ul>
+<%= render "menu" %>
 
 <p> 
     Você esta em ambiente de <strong><%= ambiente_rails %> </strong>.
 </p>
 <p>
-  Eu sou uma variável de instância/sessão <%= @nome %>
+  Eu sou uma variável de instância/sessão <strong> <%= @meu_nome %> </strong>
 </p>
 
 <p>
-  Eu sou uma variável de instância/sessão <%= @curso %>
+  Meu curso <strong> <%= @curso %> </strong>
 </p>

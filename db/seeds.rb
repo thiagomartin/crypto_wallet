@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts " Cadastrando Moedas...."
+puts "Cadastrando Moedas...."
 
 Coin.create!(
   description: "Bitcoin",

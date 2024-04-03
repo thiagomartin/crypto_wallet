@@ -8,8 +8,10 @@ namespace :dev do
 
       show_spiner("Migrando BD....") {%x(rails db:migrate)}
 
-      %x(rails dev:add_coins)
       %x(rails dev:add_mining_types)
+
+      %x(rails dev:add_coins)
+
      else
       puts "VOCÊ NÃO ESTÁ EM AMBIENTE DE DESENVOLVIMENTO"
     end
@@ -22,27 +24,32 @@ namespace :dev do
                 {
                   description: "Bitcoin",
                   acronym: "BTC",
-                  url_image: "https://toppng.com/uploads/preview/bitcoin-logo-11609355888jfc0e2xxt2.png"
+                  url_image: "https://toppng.com/uploads/preview/bitcoin-logo-11609355888jfc0e2xxt2.png",
+                  mining_type: MiningType.all.find_by(acronym:'PoW')
                 },
                 {
                   description: "Ethereum",
                   acronym: "ETH",
-                  url_image: "https://w1.pngwing.com/pngs/259/53/png-transparent-money-ethereum-ethereum-classic-fork-bitcoin-blockchain-currency-tether-thumbnail.png"
+                  url_image: "https://w1.pngwing.com/pngs/259/53/png-transparent-money-ethereum-ethereum-classic-fork-bitcoin-blockchain-currency-tether-thumbnail.png",
+                  mining_type: MiningType.all.sample
                 },
                 {
                   description: "Dash",
                   acronym: "DASH",
-                  url_image: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/dash_dashcoin-512.png"
+                  url_image: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/dash_dashcoin-512.png",
+                  mining_type: MiningType.all.sample
                 },
                 {
                   description: "Iota",
                   acronym: "IOT",
-                  url_image: "https://www.svgrepo.com/show/420202/internet-internet-of-things-iot.svg"
+                  url_image: "https://www.svgrepo.com/show/420202/internet-internet-of-things-iot.svg",
+                  mining_type: MiningType.all.sample
                 },
                 {
                   description: "ZCash",
                   acronym: "ZEC",
-                  url_image: "https://cryptologos.cc/logos/zcash-zec-logo.png"
+                  url_image: "https://cryptologos.cc/logos/zcash-zec-logo.png",
+                  mining_type: MiningType.all.sample
                 }
               ]
       coins.each do |coin|

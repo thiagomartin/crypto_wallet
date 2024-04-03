@@ -9,6 +9,7 @@ namespace :dev do
       show_spiner("Migrando BD....") {%x(rails db:migrate)}
 
       %x(rails dev:add_coins)
+      %x(rails dev:add_mining_types)
      else
       puts "VOCÊ NÃO ESTÁ EM AMBIENTE DE DESENVOLVIMENTO"
     end
@@ -44,12 +45,28 @@ namespace :dev do
                   url_image: "https://cryptologos.cc/logos/zcash-zec-logo.png"
                 }
               ]
-        coins.each do |coin|
-          sleep(1)
-        Coin.find_or_create_by!(coin)
-      end
+      coins.each do |coin|
+        sleep(1)
+      Coin.find_or_create_by!(coin)
     end
+  end
 end
+
+desc "Cadastra os tipos de mineração"
+task add_mining_types: :environment do
+  show_spiner("Cadastrando tipos de mineração....") do
+    mining_types = [
+      {name: "Proof of Work", acronym: "PoW"},
+      {name: "Proof of Stake", acronym: "PoS"},
+      {name: "Proof of Capacity", acronym: "PoC"}
+    ]
+  mining_types.each do |mining_type|
+    sleep(1)
+  MiningType.find_or_create_by!(mining_type)
+    end
+  end
+end
+
 
 
 

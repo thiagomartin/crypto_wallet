@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_124147) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_165057) do
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -25,13 +25,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_124147) do
     t.string "url_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mining_type_id", default: 1, null: false
+    t.index ["mining_type_id"], name: "index_coins_on_mining_type_id"
   end
 
   create_table "mining_types", force: :cascade do |t|
-    t.string "name"
+    t.string "description"
     t.string "acronym"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "coins", "mining_types"
 end

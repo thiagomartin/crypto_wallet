@@ -26,10 +26,17 @@
     <%= form.text_field :url_image %>
       <% if coin && coin.url_image.present? %>
   <%= image_tag coin.url_image, size: "40x40" %>
+
+  </div>
+  <div>
+  <%= form.label :mining_type_id, style: "display: block" %>
+  <%= form.select :mining_type_id, MiningType.all.collect { |m| [ m.description, m.id ] }, { include_blank: "Selecione" } %>
+
+  </div>
 <% end %>
 
       
-  </div>
+
 
   <div>
     <%= form.submit %>

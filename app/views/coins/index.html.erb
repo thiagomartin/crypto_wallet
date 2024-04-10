@@ -2,6 +2,8 @@
 
 <%= data_br(Date.today) %> </p>
 <h1>Coins</h1>
+<h2><%= cookies[:curso] %></h2>
+<h2><%= session[:curso] %></h2>
 
 <div id="coins">
   <% @coins.each do |coin| %>
